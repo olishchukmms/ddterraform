@@ -24,4 +24,18 @@ resource "datadog_dashboard" "MAAC_dashboard" {
       tick_pos         = "50%"
     }
   }
+
+  widget {
+    timeseries_definition {
+        request {
+        query {
+          metric_query {
+            name        = "All Kubernetes"
+            data_source = "metrics"
+            query       = "avg:kubernetes.cpu.system.total{cluster-name:dev}"
+          }
+        }
+      }
+    }
+  }
 }
