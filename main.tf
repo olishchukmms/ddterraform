@@ -38,15 +38,15 @@ resource "datadog_dashboard" "MAAC_dashboard" {
       }
     }
   }
-
+# some comment
   widget {
-    timeseries_definition {
+    change_definition {
         request {
         query {
           metric_query {
             name        = "Github Actions"
             data_source = "ci_pipelines"
-            query       = "search:ci_level:pipeline"
+            query       = "env:none @git.repository.id:\"github.com/olishchukmms/ddterraform\" @ci.pipeline.name:DataDog-Test @ci.provider.instance:github-actions @git.branch:main ci_level:pipeline -ci_partial_retry:true"
           }
         }
       }
