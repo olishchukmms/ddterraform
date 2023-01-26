@@ -38,4 +38,18 @@ resource "datadog_dashboard" "MAAC_dashboard" {
       }
     }
   }
+
+  widget {
+    timeseries_definition {
+        request {
+        query {
+          metric_query {
+            name        = "Github Actions"
+            data_source = "ci_pipelines"
+            query       = "search:ci_level:pipeline"
+          }
+        }
+      }
+    }
+  }
 }
