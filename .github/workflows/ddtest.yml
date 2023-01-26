@@ -1,0 +1,8 @@
+name: DataDog-Test
+on: push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test-step
+        run: echo "SOme step to be catched by Data Dog"
